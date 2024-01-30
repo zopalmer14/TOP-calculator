@@ -17,6 +17,21 @@ function divide(operand_1, operand_2) {
     return operand_1 / operand_2;
 }
 
+function operate(operand_1, operand_2, operator) {
+    switch (operator) {
+        case '+':
+            return add(operand_1, operand_2);
+        case '-':
+            return subtract(operand_1, operand_2);
+        case '*':
+            return multiply(operand_1, operand_2);
+        case '/':
+            return divide(operand_1, operand_2);
+        default:
+            return "invalid operator";
+    }
+}
+
 // USEFUL DOM REFERENCES
 
 const grid_container = document.querySelector('#grid_container');
