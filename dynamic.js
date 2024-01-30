@@ -14,7 +14,8 @@ function multiply(operand_1, operand_2) {
 }
 
 function divide(operand_1, operand_2) {
-    return operand_1 / operand_2;
+
+    return operand_2 === 0 ? 'division by 0' : operand_1 / operand_2;
 }
 
 function operate(operand_1, operand_2, operator) {
