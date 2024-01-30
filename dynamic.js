@@ -35,18 +35,7 @@ function operate(operand_1, operand_2, operator) {
 // USEFUL DOM REFERENCES
 
 const grid_container = document.querySelector('#grid_container');
-const reset_btn = document.querySelector('#reset_button');
-
-// GRID RESET (BUTTON CLICK)
-
-reset_btn.addEventListener('click', () => {
-    // prompt the user for the grid dimensions
-    let grid_dim = prompt("Enter the number of squares per side for the new grid");
-
-    // delete the current grid, then create a new one with the specified dimensions
-    grid_container.replaceChildren();
-    createGrid(grid_dim);
-});
+const calc_display = document.querySelector('#calc_display');
 
 // GRID CREATION
 
@@ -89,8 +78,17 @@ function createGrid(grid_dim) {
             column.appendChild(tile);
 
             // create an eventListener to change the color of the tile when moused-over 
-            tile.addEventListener('mouseover', function (e) {
-                e.target.style.backgroundColor = 'lightgray';
+            tile.addEventListener('click', function (e) {
+                switch (e.target.textContent) {
+                    case 'AC':
+                        calc_display.textContent = '';
+                        break;
+                    case '=':
+                        operate();
+                        break;
+                    default:
+                        calc_display.textContent += e.target.textContent;
+                }
             });
         }
     }
