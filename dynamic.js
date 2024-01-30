@@ -32,6 +32,20 @@ function operate(operand_1, operand_2, operator) {
     }
 }
 
+function evaluate(user_input) {
+    let operators = ['+', '-', '*', '/'];
+    let input_parts = [];
+
+    for (let i = 0; i < user_input.length; i++) {
+        if (operators.includes(user_input[i])) {
+            input_parts[1] = user_input[i];
+            input_parts[0] = parseInt(user_input.substring(0, i));
+            input_parts[2] = parseInt(user_input.substring(i+1));
+        }
+    }
+    return operate(input_parts[0], input_parts[2], input_parts[1]);
+}
+
 // USEFUL DOM REFERENCES
 
 const grid_container = document.querySelector('#grid_container');
@@ -84,7 +98,7 @@ function createGrid(grid_dim) {
                         calc_display.textContent = '';
                         break;
                     case '=':
-                        operate();
+                        calc_display.textContent = evaluate(calc_display.textContent);
                         break;
                     default:
                         calc_display.textContent += e.target.textContent;

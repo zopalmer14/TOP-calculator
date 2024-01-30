@@ -60,6 +60,7 @@ body {
     padding: 4px;
     margin-bottom: 2.5vh;
     border-radius: 10px;
+    overflow: hidden;
 }
 
 #grid_container {
